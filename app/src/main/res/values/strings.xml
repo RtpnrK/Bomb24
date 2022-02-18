@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bomb24</string>
+    <string name="howToPlay">\t\t\tSomeone planted the bomb, so you need to defuse it within
+        a time, but to defuse it you need to solve a puzzle that has 4 numbers and some operators.
+        Yes, it is a 24 game!\n\n
+        \t\t\tGame will generate 4 numbers and you need to Find the way to make its result to 24 by
+        using operations +, -, x, ÷, ^ and parentheses ( ) if you can’t solve it within a time or
+        your answer is wrong in hard mode, the bomb will explode, and the game will be over.</string>
+</resources>
