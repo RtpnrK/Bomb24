@@ -20,4 +20,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HowToPlay.class);
         startActivity(intent);
     }
+
+    public void highScore(View view) {
+        Intent intent = new Intent(this, HighScore.class);
+        startActivity(intent);
+    }
+
+    public void selectDifficulty(View view) {
+        Intent intent = new Intent(this, SelectDifficulty.class);
+        startActivity(intent);
+    }
+
 }

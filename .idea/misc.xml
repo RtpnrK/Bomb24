@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/HP/AndroidStudioProjects/Bomb24/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Bomb24/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Bomb24/app/src/main/res/layout/activity_high_score.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Bomb24/app/src/main/res/layout/activity_how_to_play.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Bomb24/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Bomb24/app/src/main/res/layout/activity_select_diificulty.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Bomb24/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2703125" />
       </map>
     </option>
