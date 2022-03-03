@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectDifficulty">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="424dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/galindo"
+        android:text="Select Difficulty"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.84"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/easy_bt"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/galindo"
+        android:onClick="easy"
+        android:text="Easy"
+        app:layout_constraintBottom_toTopOf="@+id/normal_bt"
+        app:layout_constraintEnd_toEndOf="@+id/normal_bt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/normal_bt" />
+
+    <Button
+        android:id="@+id/normal_bt"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/galindo"
+        android:onClick="normal"
+        android:text="Normal"
+        app:layout_constraintBottom_toTopOf="@+id/hard_bt"
+        app:layout_constraintStart_toStartOf="@+id/hard_bt" />
+
+    <Button
+        android:id="@+id/hard_bt"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="36dp"
+        android:fontFamily="@font/galindo"
+        android:onClick="hard"
+        android:text="Hard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/detail_tv"
+        android:layout_width="391dp"
+        android:layout_height="172dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/galindo"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/normal_bt"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/next_bt"
+        android:layout_width="128dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="36dp"
+        android:enabled="false"
+        android:onClick="next"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_tv"
+        app:layout_constraintVertical_bias="0.928" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="97dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:onClick="back"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/easy_bt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
