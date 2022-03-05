@@ -1,22 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B7B7B7"
     tools:context=".game_easy">
 
+
+    <android.widget.Button
+        android:id="@+id/blue_bt"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <android.widget.Button
+        android:id="@+id/yellow_bt"
+        android:layout_width="333px"
+        android:layout_height="333px"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/yellow"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <android.widget.Button
+        android:id="@+id/red_bt"
+        android:layout_width="333px"
+        android:layout_height="333px"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/red"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <android.widget.Button
+        android:id="@+id/green_bt"
+        android:layout_width="333px"
+        android:layout_height="333px"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/green"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline11" />
+
+ <android.widget.Button
+     android:id="@+id/clear_bt"
+     android:layout_width="100dp"
+     android:layout_height="100dp"
+     android:background="@drawable/clear"
+     app:layout_constraintStart_toStartOf="@+id/guideline11"
+     app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+ <android.widget.Button
+     android:id="@+id/undo_bt"
+     android:layout_width="100dp"
+     android:layout_height="100dp"
+     android:background="@drawable/undo"
+     app:layout_constraintEnd_toStartOf="@+id/guideline13"
+     app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+ <android.widget.Button
+     android:id="@+id/close_bt"
+     android:layout_width="100dp"
+     android:layout_height="100dp"
+     android:background="@drawable/close_p"
+     app:layout_constraintBottom_toTopOf="@+id/guideline14"
+     app:layout_constraintEnd_toStartOf="@+id/guideline13" />
+
+    <android.widget.Button
+        android:id="@+id/open_bt"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/open_p"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline11" />
+
+ <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="46dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="300dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="120dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="371dp" />
+
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="204dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="120dp"
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="50sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/result_tv"
+        android:layout_width="248dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/message_box"
+        android:text="TextView"
+        android:textColor="@color/red"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time_tv"
+        android:layout_width="248dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/message_box"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.Button
+        android:id="@+id/plus_bt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/op_button"
+        android:text="+"
+        app:layout_constraintBottom_toTopOf="@+id/multiply_bt"
+        app:layout_constraintStart_toStartOf="@+id/guideline16"
+        app:layout_constraintTop_toTopOf="@+id/guideline12"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.widget.Button
+        android:id="@+id/enter_bt"
+        android:layout_width="177dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/op_button"
+        android:text="Enter"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
+
+    <android.widget.Button
+        android:id="@+id/minus_bt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/op_button"
+        android:text="-"
+        app:layout_constraintStart_toEndOf="@+id/plus_bt"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <android.widget.Button
+        android:id="@+id/multiply_bt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/op_button"
+        android:text="*"
+        app:layout_constraintBottom_toTopOf="@+id/enter_bt"
+        app:layout_constraintEnd_toStartOf="@+id/divide_bt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline16" />
+
+    <android.widget.Button
+        android:id="@+id/divide_bt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/op_button"
+        android:text="/"
+        app:layout_constraintBottom_toTopOf="@+id/enter_bt"
+        app:layout_constraintEnd_toStartOf="@+id/power_bt" />
+
+    <android.widget.Button
+        android:id="@+id/power_bt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="124dp"
+        android:background="@drawable/op_button"
+        android:text="^"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="715dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="369dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
