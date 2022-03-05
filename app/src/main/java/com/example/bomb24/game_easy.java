@@ -1,8 +1,10 @@
 package com.example.bomb24;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -40,6 +42,7 @@ public class game_easy extends AppCompatActivity {
         close_bt = findViewById(R.id.close_bt);
         undo_bt = findViewById(R.id.undo_bt);
         clear_bt = findViewById(R.id.clear_bt);
+        time_tv = findViewById(R.id.time_tv);
         opAL.add(plus_bt);
         opAL.add(minus_bt);
         opAL.add(multiply_bt);
@@ -58,10 +61,10 @@ public class game_easy extends AppCompatActivity {
         allAL.add(undo_bt);
         allAL.add(clear_bt);
         Random randNum = new Random();
-        String num1 = String.valueOf(randNum.nextInt(10));
-        String num2 = String.valueOf(randNum.nextInt(10));
-        String num3 = String.valueOf(randNum.nextInt(10));
-        String num4 = String.valueOf(randNum.nextInt(10));
+        String num1 = String.valueOf(randNum.nextInt(9) + 1);
+        String num2 = String.valueOf(randNum.nextInt(9) + 1);
+        String num3 = String.valueOf(randNum.nextInt(9) + 1);
+        String num4 = String.valueOf(randNum.nextInt(9) + 1);
         blue_bt.setText(num1);
         red_bt.setText(num2);
         green_bt.setText(num3);
@@ -175,7 +178,7 @@ public class game_easy extends AppCompatActivity {
         disableBT(numAL);
     }
 
-    public void openPara(View v) {
+    public void openParentheses(View v) {
         result_tv.append("( ");
         blue_bt.setEnabled(true);
         red_bt.setEnabled(true);
@@ -184,7 +187,7 @@ public class game_easy extends AppCompatActivity {
         disableBT(numAL);
     }
 
-    public void closePara(View v) {
+    public void closeParentheses(View v) {
         result_tv.append(") ");
         blue_bt.setEnabled(true);
         red_bt.setEnabled(true);
@@ -229,10 +232,14 @@ public class game_easy extends AppCompatActivity {
             @SuppressLint("DefaultLocale") String ans = String.format("%.2f", e.evaluate());
             if (numAL.size() == 4) {
                 if (e.evaluate() == 24) {
-                    result_tv.setText(ans + ", You Win!");
+                    result_tv.setText(ans);
+                    time_tv.setText("Bomb Defuse!");
+                    time_tv.setTextColor(Color.GREEN);
+                    result_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
                 } else {
-                    result_tv.setText(ans + ", try again");
+                    result_tv.setText(ans);
+                    time_tv.setText("Try again!");
                     disableBT(allAL);
                     clear_bt.setEnabled(true);
                 }
