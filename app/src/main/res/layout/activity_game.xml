@@ -4,83 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B7B7B7"
-    tools:context=".game_easy">
+    android:background="#B7B7B7">
 
 
     <android.widget.Button
-        android:id="@+id/blue_bt"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:background="@drawable/number_bt"
-        android:backgroundTint="@color/blue"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        android:id="@+id/clear_bt"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/clear"
+        android:onClick="clear"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
     <android.widget.Button
-        android:id="@+id/yellow_bt"
-        android:layout_width="333px"
-        android:layout_height="333px"
-        android:background="@drawable/number_bt"
-        android:backgroundTint="@color/yellow"
-        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        android:id="@+id/undo_bt"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/undo"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
     <android.widget.Button
-        android:id="@+id/red_bt"
-        android:layout_width="333px"
-        android:layout_height="333px"
-        android:background="@drawable/number_bt"
-        android:backgroundTint="@color/red"
+        android:id="@+id/close_bt"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/close_p"
+        android:onClick="closePara"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintStart_toStartOf="@+id/guideline11"
-        app:layout_constraintTop_toTopOf="@+id/guideline12" />
-
-    <android.widget.Button
-        android:id="@+id/green_bt"
-        android:layout_width="333px"
-        android:layout_height="333px"
-        android:background="@drawable/number_bt"
-        android:backgroundTint="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/guideline14"
-        app:layout_constraintEnd_toStartOf="@+id/guideline13"
-        app:layout_constraintStart_toStartOf="@+id/guideline11" />
-
- <android.widget.Button
-     android:id="@+id/clear_bt"
-     android:layout_width="100dp"
-     android:layout_height="100dp"
-     android:background="@drawable/clear"
-     app:layout_constraintStart_toStartOf="@+id/guideline11"
-     app:layout_constraintTop_toTopOf="@+id/guideline12" />
-
- <android.widget.Button
-     android:id="@+id/undo_bt"
-     android:layout_width="100dp"
-     android:layout_height="100dp"
-     android:background="@drawable/undo"
-     app:layout_constraintEnd_toStartOf="@+id/guideline13"
-     app:layout_constraintTop_toTopOf="@+id/guideline12" />
-
- <android.widget.Button
-     android:id="@+id/close_bt"
-     android:layout_width="100dp"
-     android:layout_height="100dp"
-     android:background="@drawable/close_p"
-     app:layout_constraintBottom_toTopOf="@+id/guideline14"
-     app:layout_constraintEnd_toStartOf="@+id/guideline13" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline13" />
 
     <android.widget.Button
         android:id="@+id/open_bt"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/open_p"
+        android:onClick="openPara"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintStart_toStartOf="@+id/guideline11" />
 
- <androidx.constraintlayout.widget.Guideline
+    <android.widget.Button
+        android:id="@+id/blue_bt"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/blue"
+        android:onClick="blueClick"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <android.widget.Button
+        android:id="@+id/yellow_bt"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/yellow"
+        android:onClick="yellowClick"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <android.widget.Button
+        android:id="@+id/red_bt"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/red"
+        android:onClick="redClick"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <android.widget.Button
+        android:id="@+id/green_bt"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/number_bt"
+        android:backgroundTint="@color/green"
+        android:onClick="greenClick"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline11" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,6 +121,8 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/message_box"
         android:text="TextView"
+        android:textSize="30sp"
+        android:fontFamily="@font/digital7"
         android:textColor="@color/red"
         android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
@@ -130,7 +138,9 @@
         android:background="@drawable/message_box"
         android:gravity="center"
         android:text="TextView"
+        android:fontFamily="@font/digital7mono"
         android:textColor="@color/red"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
@@ -142,7 +152,9 @@
         android:layout_height="75dp"
         android:layout_marginStart="12dp"
         android:background="@drawable/op_button"
+        android:onClick="plus"
         android:text="+"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/multiply_bt"
         app:layout_constraintStart_toStartOf="@+id/guideline16"
         app:layout_constraintTop_toTopOf="@+id/guideline12"
@@ -154,7 +166,9 @@
         android:layout_height="65dp"
         android:layout_marginStart="12dp"
         android:background="@drawable/op_button"
+        android:onClick="showAns"
         android:text="Enter"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.0"
@@ -166,7 +180,9 @@
         android:layout_height="75dp"
         android:layout_marginStart="24dp"
         android:background="@drawable/op_button"
+        android:onClick="minus"
         android:text="-"
+        android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/plus_bt"
         app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
@@ -177,7 +193,9 @@
         android:layout_marginStart="12dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/op_button"
+        android:onClick="multiply"
         android:text="*"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/enter_bt"
         app:layout_constraintEnd_toStartOf="@+id/divide_bt"
         app:layout_constraintHorizontal_bias="0.0"
@@ -190,7 +208,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/op_button"
+        android:onClick="divide"
         android:text="/"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/enter_bt"
         app:layout_constraintEnd_toStartOf="@+id/power_bt" />
 
@@ -201,7 +221,9 @@
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="124dp"
         android:background="@drawable/op_button"
+        android:onClick="power"
         android:text="^"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline15" />
 

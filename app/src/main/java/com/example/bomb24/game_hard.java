@@ -1,16 +1,11 @@
 package com.example.bomb24;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.TextView;
 
-public class game_hard extends AppCompatActivity {
+public class game_hard extends game_normal {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        TextView show_tv;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
     }
 }
