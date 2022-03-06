@@ -56,6 +56,7 @@ public class game_easy extends AppCompatActivity {
         allAL.add(minus_bt);
         allAL.add(multiply_bt);
         allAL.add(divide_bt);
+        allAL.add(power_bt);
         allAL.add(open_bt);
         allAL.add(close_bt);
         allAL.add(undo_bt);
