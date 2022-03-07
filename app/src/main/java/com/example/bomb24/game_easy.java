@@ -197,18 +197,31 @@ public class game_easy extends AppCompatActivity {
         disableBT(numAL);
     }
 
+    /*
     public void undo(View v) {
         String[] temp = result_tv.getText().toString().split(" ");
         String text = "";
         for (int i = 0; i < temp.length - 1; i++) {
             text = text + temp[i] + " ";
         }
+        boolean isOP = checkAL(temp[temp.length-1], opAL);
         result_tv.setText(text);
-    }
+        if (isOP) {
+            enableBT(opAL);
+            time_tv.setText(String.valueOf(temp.length-1));
+        } else
+            enableBT(allAL);
+            disableBT(numAL);
+            disableBT(opAL);
+            numAL.get(numAL.size()-1).setEnabled(true);
+            numAL.remove(numAL.size()-1);
+            time_tv.setText(String.valueOf(temp.length-1));
+        }*/
 
     public void clear(View v) {
         result_tv.setText("");
         enableBT(allAL);
+        disableBT(opAL);
         numAL.clear();
     }
 
@@ -222,6 +235,14 @@ public class game_easy extends AppCompatActivity {
         for (Button b : btAL) {
             b.setEnabled(false);
         }
+    }
+
+    public static boolean checkAL(String s, ArrayList<Button> aL) {
+        for (int i = 0; i < aL.size(); i++) {
+            if (s.equals(aL.get(i).getText())) {
+                return true;
+            }
+        } return false;
     }
 
     @SuppressLint("SetTextI18n")
