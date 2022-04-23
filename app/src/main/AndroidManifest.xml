@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bomb24">
         <activity
+            android:name=".Lose"
+            android:exported="false" />
+        <activity
+            android:name=".Win"
+            android:exported="false" />
+        <activity
+            android:name=".test"
+            android:exported="false" />
+        <activity
             android:name=".game_easy"
             android:exported="false"
             android:screenOrientation="sensorLandscape" />

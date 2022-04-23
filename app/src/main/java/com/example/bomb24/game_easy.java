@@ -1,30 +1,39 @@
 package com.example.bomb24;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.*;
-
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 public class game_easy extends AppCompatActivity {
     protected Button blue_bt, red_bt, green_bt, yellow_bt, plus_bt, minus_bt, multiply_bt, divide_bt,
-            power_bt, open_bt, close_bt, undo_bt, clear_bt;
-    protected TextView result_tv, time_tv;
+            power_bt, open_bt, close_bt, undo_bt, clear_bt, enter_bt;
+    protected TextView result_tv, time_tv, ans_tv, mode_tv;
     protected ArrayList<Button> numAL, opAL, allAL;
+    protected CountDownTimer cdt;
+    protected boolean gameWin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Handler handler = new Handler();
         numAL = new ArrayList<Button>();
         opAL = new ArrayList<Button>();
         allAL = new ArrayList<Button>();
@@ -43,6 +52,9 @@ public class game_easy extends AppCompatActivity {
         undo_bt = findViewById(R.id.undo_bt);
         clear_bt = findViewById(R.id.clear_bt);
         time_tv = findViewById(R.id.time_tv);
+        ans_tv = findViewById(R.id.ans_tv);
+        mode_tv = findViewById(R.id.mode_tv);
+        enter_bt = findViewById(R.id.enter_bt);
         opAL.add(plus_bt);
         opAL.add(minus_bt);
         opAL.add(multiply_bt);
@@ -61,6 +73,27 @@ public class game_easy extends AppCompatActivity {
         allAL.add(close_bt);
         allAL.add(undo_bt);
         allAL.add(clear_bt);
+        allAL.add(enter_bt);
+        mode_tv.setText("Game mode: Easy");
+        time_tv.setText("Start!");
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cdt = new CountDownTimer(180000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                        String strTime = String.valueOf(millisUntilFinished / 1000);
+                        //strTime เปลี่ยนเป็นปุ่มกดหน้าก่อนเข้าไปเล่นเกม
+                        time_tv.setText(strTime);
+                    }
+                    public void onFinish() {
+                        time_tv.setText("0");
+                        result_tv.setText("Time Out!");
+                    }
+                };
+                cdt.start();
+            }
+        },1000);
+
         Random randNum = new Random();
         String num1 = String.valueOf(randNum.nextInt(9) + 1);
         String num2 = String.valueOf(randNum.nextInt(9) + 1);
@@ -197,29 +230,31 @@ public class game_easy extends AppCompatActivity {
         disableBT(numAL);
     }
 
-    /*
     public void undo(View v) {
-        String[] temp = result_tv.getText().toString().split(" ");
-        String text = "";
-        for (int i = 0; i < temp.length - 1; i++) {
-            text = text + temp[i] + " ";
+        ans_tv.setText("");
+        if (numAL.size() != 0) {
+            String[] temp = result_tv.getText().toString().split(" ");
+            String text = "";
+            for (int i = 0; i < temp.length - 1; i++) {
+                text = text + temp[i] + " ";
+            }
+            boolean isOP = checkAL(temp[temp.length - 1], opAL);
+            result_tv.setText(text);
+            if (isOP) {
+                enableBT(opAL);
+            } else {
+                enableBT(allAL);
+                disableBT(numAL);
+                disableBT(opAL);
+                numAL.get(numAL.size() - 1).setEnabled(true);
+                numAL.remove(numAL.size() - 1);
+            }
         }
-        boolean isOP = checkAL(temp[temp.length-1], opAL);
-        result_tv.setText(text);
-        if (isOP) {
-            enableBT(opAL);
-            time_tv.setText(String.valueOf(temp.length-1));
-        } else
-            enableBT(allAL);
-            disableBT(numAL);
-            disableBT(opAL);
-            numAL.get(numAL.size()-1).setEnabled(true);
-            numAL.remove(numAL.size()-1);
-            time_tv.setText(String.valueOf(temp.length-1));
-        }*/
+        }
 
     public void clear(View v) {
         result_tv.setText("");
+        ans_tv.setText("");
         enableBT(allAL);
         disableBT(opAL);
         numAL.clear();
@@ -242,7 +277,25 @@ public class game_easy extends AppCompatActivity {
             if (s.equals(aL.get(i).getText())) {
                 return true;
             }
-        } return false;
+        }
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        alert(this);
+    }
+
+    public void alert(Context context) {
+        new AlertDialog.Builder(context).setMessage("Do you want to end this game")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        System.exit(0);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     @SuppressLint("SetTextI18n")
@@ -254,25 +307,40 @@ public class game_easy extends AppCompatActivity {
             @SuppressLint("DefaultLocale") String ans = String.format("%.2f", e.evaluate());
             if (numAL.size() == 4) {
                 if (e.evaluate() == 24) {
-                    result_tv.setText(ans);
-                    time_tv.setText("Bomb Defuse!");
+                    gameWin = true;
+                    ans_tv.setText(ans);
+                    result_tv.setText("Bomb Defuse!");
                     time_tv.setTextColor(Color.GREEN);
-                    result_tv.setTextColor(Color.GREEN);
+                    ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
+                    gameOver();
                 } else {
-                    result_tv.setText(ans);
-                    time_tv.setText("Try again!");
+                    gameWin = false;
+                    ans_tv.setText(ans);
+                    result_tv.setText("Try again!");
                     disableBT(allAL);
                     clear_bt.setEnabled(true);
+                    gameOver();
                 }
             } else {
-                result_tv.setText(ans + " ");
+                ans_tv.setText(ans + " ");
                 enableBT(opAL);
             }
         } catch (Exception e) {
-            result_tv.setText("ERROR!");
+            ans_tv.setText("ERROR!");
             disableBT(allAL);
             clear_bt.setEnabled(true);
         }
+    }
+
+    public void gameOver() {
+        Intent intent;
+        if (gameWin) {
+            intent = new Intent(this, Win.class);
+        } else {
+            intent = new Intent(this, Lose.class);
+        }
+        Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+        startActivity(intent,b);
     }
 }
