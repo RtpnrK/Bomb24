@@ -2,7 +2,7 @@
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
     <fade
         android:startDelay="1000"
-        android:duration="5000"
+        android:duration="2000"
         />
 
 </transitionSet>

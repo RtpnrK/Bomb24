@@ -2,6 +2,9 @@ package com.example.bomb24;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,4 +35,25 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void quit(View view) {
+        alert(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        alert(this);
+    }
+
+    public void alert(Context context) {
+        new AlertDialog.Builder(context).setMessage("Do you want to quit?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finishAffinity();
+                        System.exit(0);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
 }

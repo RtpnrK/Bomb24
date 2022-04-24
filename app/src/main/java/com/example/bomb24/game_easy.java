@@ -1,9 +1,9 @@
 package com.example.bomb24;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,11 +12,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.widget.*;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
@@ -27,23 +23,26 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class game_easy extends AppCompatActivity {
     protected Button blue_bt, red_bt, green_bt, yellow_bt, plus_bt, minus_bt, multiply_bt, divide_bt,
-            power_bt, open_bt, close_bt, undo_bt, clear_bt, enter_bt;
-    protected TextView result_tv, time_tv, ans_tv, mode_tv, highScoreTV;
+            power_bt, open_bt, close_bt, undo_bt, clear_bt, enter_bt, resume_bt, change_bt, mainMenu_bt;
+    protected ImageView background, menu_bt;
+    protected TextView result_tv, time_tv, ans_tv, mode_tv;
     protected ArrayList<Button> numAL, opAL, allAL;
     protected CountDownTimer cdt;
     protected boolean gameWin;
+    protected long startTimeMillis, currentTimeMillis;
     protected int score = 0;
     protected String highScore = " ";
+    protected String gameMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        gameMode = "Easy";
         Handler handler = new Handler();
         numAL = new ArrayList<Button>();
         opAL = new ArrayList<Button>();
@@ -66,7 +65,11 @@ public class game_easy extends AppCompatActivity {
         ans_tv = findViewById(R.id.ans_tv);
         mode_tv = findViewById(R.id.mode_tv);
         enter_bt = findViewById(R.id.enter_bt);
-        highScoreTV =findViewById(R.id.highScoreTV);
+        background = findViewById(R.id.blur_background);
+        resume_bt = findViewById(R.id.resume_bt);
+        change_bt = findViewById(R.id.change_bt);
+        mainMenu_bt = findViewById(R.id.mainMenu_bt);
+        menu_bt = findViewById(R.id.menu_bt);
         opAL.add(plus_bt);
         opAL.add(minus_bt);
         opAL.add(multiply_bt);
@@ -88,34 +91,38 @@ public class game_easy extends AppCompatActivity {
         allAL.add(enter_bt);
         mode_tv.setText("Game mode: Easy");
         time_tv.setText("Start!");
+        startTimeMillis = 180000;
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                cdt = new CountDownTimer(180000, 1000) {
-                    public void onTick(long millisUntilFinished) {
-                        String strTime = String.valueOf(millisUntilFinished / 1000);
-                        //strTime เปลี่ยนเป็นปุ่มกดหน้าก่อนเข้าไปเล่นเกม
-                        time_tv.setText(strTime);
-                    }
-                    public void onFinish() {
-                        time_tv.setText("0");
-                        result_tv.setText("Time Out!");
-                    }
-                };
-                cdt.start();
+                timeUpdate(startTimeMillis);
             }
         },1000);
-
-        Random randNum = new Random();
-        String num1 = String.valueOf(randNum.nextInt(9) + 1);
-        String num2 = String.valueOf(randNum.nextInt(9) + 1);
-        String num3 = String.valueOf(randNum.nextInt(9) + 1);
-        String num4 = String.valueOf(randNum.nextInt(9) + 1);
+        String num1 = getIntent().getStringExtra("num1");
+        String num2 = getIntent().getStringExtra("num2");
+        String num3 = getIntent().getStringExtra("num3");
+        String num4 = getIntent().getStringExtra("num4");
         blue_bt.setText(num1);
         red_bt.setText(num2);
         green_bt.setText(num3);
         yellow_bt.setText(num4);
         result_tv.setText("");
+    }
+
+    public void timeUpdate(long timeInMillis) {
+        cdt = new CountDownTimer(timeInMillis, 1000) {
+            public void onTick(long millisUntilFinished) {
+                currentTimeMillis = millisUntilFinished;
+                String strTime = String.valueOf(millisUntilFinished / 1000);
+                time_tv.setText(strTime);
+            }
+            public void onFinish() {
+                time_tv.setText("0");
+                result_tv.setText("Time Out!");
+                gameOver();
+            }
+        };
+        cdt.start();
     }
 
     public void blueClick(View v) {
@@ -272,6 +279,55 @@ public class game_easy extends AppCompatActivity {
         numAL.clear();
     }
 
+    public void menuOpen(View v) {
+        for (Button b : allAL) {
+            b.setClickable(false);
+        }
+        background.setVisibility(View.VISIBLE);
+        resume_bt.setVisibility(View.VISIBLE);
+        change_bt.setVisibility(View.VISIBLE);
+        mainMenu_bt.setVisibility(View.VISIBLE);
+        menu_bt.setVisibility(View.INVISIBLE);
+    }
+
+    public void resume(View v) {
+        for (Button b : allAL) {
+            b.setClickable(true);
+        }
+        background.setVisibility(View.INVISIBLE);
+        resume_bt.setVisibility(View.INVISIBLE);
+        change_bt.setVisibility(View.INVISIBLE);
+        mainMenu_bt.setVisibility(View.INVISIBLE);
+        menu_bt.setVisibility(View.VISIBLE);
+    }
+
+    public void changeDifficulty(View v) {
+        Intent intent = new Intent(this, SelectDifficulty.class);
+        new AlertDialog.Builder(this).setMessage("Do you want to change difficulty")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    public void mainMenu(View v) {
+        new AlertDialog.Builder(this).setMessage("Do you want to go back to main menu")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                        System.exit(0);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
     public static void enableBT(ArrayList<Button> btAL) {
         for (Button b : btAL) {
             b.setEnabled(true);
@@ -295,19 +351,7 @@ public class game_easy extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        alert(this);
-    }
 
-    public void alert(Context context) {
-        new AlertDialog.Builder(context).setMessage("Do you want to end this game")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        System.exit(0);
-                    }
-                })
-                .setNegativeButton("No", null)
-                .show();
     }
 
     @SuppressLint("SetTextI18n")
@@ -322,21 +366,18 @@ public class game_easy extends AppCompatActivity {
                     gameWin = true;
                     ans_tv.setText(ans);
                     result_tv.setText("Bomb Defuse!");
-                    time_tv.setTextColor(Color.GREEN);
+                    result_tv.setTextColor(Color.GREEN);
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
                     gameOver();
-                    CheckHighScore();
-                    score++;
                 } else {
                     gameWin = false;
                     ans_tv.setText(ans);
                     result_tv.setText("Try again!");
                     disableBT(allAL);
                     clear_bt.setEnabled(true);
-                    gameOver();
-                    CheckHighScore();
                 }
+                //CheckHighScore();
             } else {
                 ans_tv.setText(ans + " ");
                 enableBT(opAL);
@@ -349,22 +390,24 @@ public class game_easy extends AppCompatActivity {
     }
 
     public void gameOver() {
-        Intent intent;
-        if (gameWin) {
-            intent = new Intent(this, Win.class);
-        } else {
-            intent = new Intent(this, Lose.class);
-        }
+        Intent intent = new Intent(this, GameOver.class);
+        intent.putExtra("gameWin", gameWin);
+        intent.putExtra("gameMode", gameMode);
+        cdt.cancel();
+        time_tv.setText("");
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
-        startActivity(intent,b);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(intent,b);
+            }
+        },2000);
     }
 
     public void CheckHighScore(){
-
         if (highScore.equals("")){
-
             highScore = this.getHighScore();
-            highScoreTV.setText(highScore);
         }
         else if (score > Integer.parseInt(highScore)){
             highScore = String.valueOf(score);
@@ -373,7 +416,6 @@ public class game_easy extends AppCompatActivity {
             if (!scoreFile.exists()){
                 try {
                     scoreFile.createNewFile();
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -391,7 +433,6 @@ public class game_easy extends AppCompatActivity {
 
             finally {
                 try {
-
                     if (writer != null)
                         writer.close();
                 } catch (Exception e) {
@@ -409,14 +450,12 @@ public class game_easy extends AppCompatActivity {
             readFile = new FileReader("highScore.dat");
             reader = new BufferedReader(readFile);
             return reader.readLine();
-
         }
         catch (Exception e) {
             return "0";
         }
         finally {
             try {
-
                 if (reader != null)
                     reader.close();
             } catch (IOException e) {
@@ -424,6 +463,4 @@ public class game_easy extends AppCompatActivity {
             }
         }
     }
-
-
 }

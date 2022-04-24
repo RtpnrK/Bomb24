@@ -11,10 +11,10 @@
         style="@android:style/TextAppearance.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="56dp"
         android:text="็็็้้High Score"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="152dp" />
+        tools:layout_editor_absoluteX="312dp" />
 
     <TextView
         android:id="@+id/highScoreTV"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="145dp" />
+        tools:layout_editor_absoluteX="329dp"
+        tools:layout_editor_absoluteY="161dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

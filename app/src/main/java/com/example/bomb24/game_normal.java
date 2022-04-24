@@ -16,24 +16,52 @@ public class game_normal extends game_easy {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mode_tv.setText("Game mode: Normal");
+        enter_bt.setOnClickListener(this::showAns);
+        startTimeMillis = 120000;
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                cdt = new CountDownTimer(120000, 1000) {
-                    public void onTick(long millisUntilFinished) {
-                        String strTime = String.valueOf(millisUntilFinished / 1000);
-                        //strTime เปลี่ยนเป็นปุ่มกดหน้าก่อนเข้าไปเล่นเกม
-                        time_tv.setText(strTime);
-                    }
-
-                    public void onFinish() {
-                        time_tv.setText("0");
-                        result_tv.setText("Time Out!");
-                    }
-                };
-                cdt.start();
+                cdt.cancel();
+                timeUpdate(startTimeMillis);
             }
-        }, 1000);
+        },1000);
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void showAns(View v) {
+        try {
+            String exp = result_tv.getText().toString();
+            ExpressionBuilder eb = new ExpressionBuilder(exp);
+            Expression e = eb.build();
+            @SuppressLint("DefaultLocale") String ans = String.format("%.2f", e.evaluate());
+            if (numAL.size() == 4) {
+                if (e.evaluate() == 24) {
+                    gameWin = true;
+                    ans_tv.setText(ans);
+                    result_tv.setText("Bomb Defuse!");
+                    time_tv.setTextColor(Color.GREEN);
+                    ans_tv.setTextColor(Color.GREEN);
+                    disableBT(allAL);
+                    gameOver();
+                } else {
+                    gameWin = false;
+                    ans_tv.setText(ans);
+                    result_tv.setText("Try again!");
+                    disableBT(allAL);
+                    clear_bt.setEnabled(true);
+                    currentTimeMillis -= 10000;
+                    cdt.cancel();
+                    timeUpdate(currentTimeMillis);
+                }
+            } else {
+                ans_tv.setText(ans + " ");
+                enableBT(opAL);
+            }
+        } catch (Exception e) {
+            ans_tv.setText("ERROR!");
+            disableBT(allAL);
+            clear_bt.setEnabled(true);
+        }
     }
 }

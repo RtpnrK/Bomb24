@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class SelectDifficulty extends AppCompatActivity {
     private TextView detail_tv;
     private Button easy_bt, normal_bt, hard_bt, next_bt, back_bt;
-    private Intent next_intent;
+    private String gameMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class SelectDifficulty extends AppCompatActivity {
         normal_bt.setEnabled(true);
         hard_bt.setEnabled(true);
         detail_tv.setText("Time will not decrease if the answer is wrong.");
-        next_intent = new Intent(this, game_easy.class);
+        gameMode = "Easy";
     }
 
     public void normal(View v) {
@@ -41,7 +41,7 @@ public class SelectDifficulty extends AppCompatActivity {
         easy_bt.setEnabled(true);
         hard_bt.setEnabled(true);
         detail_tv.setText("Time will decrease if the answer is wrong.");
-        next_intent = new Intent(this, game_normal.class);
+        gameMode = "Normal";
     }
 
     public void hard(View v) {
@@ -50,7 +50,7 @@ public class SelectDifficulty extends AppCompatActivity {
         easy_bt.setEnabled(true);
         normal_bt.setEnabled(true);
         detail_tv.setText("Game will over if the answer is wrong.");
-        next_intent = new Intent(this, game_hard.class);
+        gameMode = "Hard";
     }
 
     public void back(View v) {
@@ -59,6 +59,9 @@ public class SelectDifficulty extends AppCompatActivity {
     }
 
     public void next(View v) {
-        startActivity(next_intent);
+        Intent intent = new Intent(this, Start.class);
+        intent.putExtra("gameMode", gameMode);
+        startActivity(intent);
+        finish();
     }
 }
