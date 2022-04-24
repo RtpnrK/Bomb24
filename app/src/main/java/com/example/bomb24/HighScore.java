@@ -25,7 +25,7 @@ public class HighScore extends game_easy {
         if (highScore.equals("")){
 
             highScore = this.getHighScore();
-            highScoreTV.setText("10000");
+            highScoreTV.setText(highScore);
         }
         else if (score > Integer.parseInt(highScore)){
             highScore = String.valueOf(score);
