@@ -1,8 +1,6 @@
 package com.example.bomb24;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,19 +12,32 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class game_easy extends AppCompatActivity {
     protected Button blue_bt, red_bt, green_bt, yellow_bt, plus_bt, minus_bt, multiply_bt, divide_bt,
             power_bt, open_bt, close_bt, undo_bt, clear_bt, enter_bt;
-    protected TextView result_tv, time_tv, ans_tv, mode_tv;
+    protected TextView result_tv, time_tv, ans_tv, mode_tv, highScoreTV;
     protected ArrayList<Button> numAL, opAL, allAL;
     protected CountDownTimer cdt;
     protected boolean gameWin;
+    protected int score = 0;
+    protected String highScore = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +66,7 @@ public class game_easy extends AppCompatActivity {
         ans_tv = findViewById(R.id.ans_tv);
         mode_tv = findViewById(R.id.mode_tv);
         enter_bt = findViewById(R.id.enter_bt);
+        highScoreTV =findViewById(R.id.highScoreTV);
         opAL.add(plus_bt);
         opAL.add(minus_bt);
         opAL.add(multiply_bt);
@@ -314,6 +326,8 @@ public class game_easy extends AppCompatActivity {
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
                     gameOver();
+                    CheckHighScore();
+                    score++;
                 } else {
                     gameWin = false;
                     ans_tv.setText(ans);
@@ -321,6 +335,7 @@ public class game_easy extends AppCompatActivity {
                     disableBT(allAL);
                     clear_bt.setEnabled(true);
                     gameOver();
+                    CheckHighScore();
                 }
             } else {
                 ans_tv.setText(ans + " ");
@@ -343,4 +358,72 @@ public class game_easy extends AppCompatActivity {
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
         startActivity(intent,b);
     }
+
+    public void CheckHighScore(){
+
+        if (highScore.equals("")){
+
+            highScore = this.getHighScore();
+            highScoreTV.setText("10000");
+        }
+        else if (score > Integer.parseInt(highScore)){
+            highScore = String.valueOf(score);
+
+            File scoreFile = new File("highScore.dat");
+            if (!scoreFile.exists()){
+                try {
+                    scoreFile.createNewFile();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            FileWriter writerFile = null;
+            BufferedWriter writer = null;
+
+            try {
+                writerFile = new FileWriter(scoreFile);
+                writer = new BufferedWriter(writerFile);
+                writer.write(this.highScore);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            finally {
+                try {
+
+                    if (writer != null)
+                        writer.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public String getHighScore(){
+        FileReader readFile = null;
+        BufferedReader reader = null;
+        try{
+            readFile = new FileReader("highScore.dat");
+            reader = new BufferedReader(readFile);
+            return reader.readLine();
+
+        }
+        catch (Exception e) {
+            return "0";
+        }
+        finally {
+            try {
+
+                if (reader != null)
+                    reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

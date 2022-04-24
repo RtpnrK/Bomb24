@@ -6,4 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".HighScore">
 
+    <TextView
+        android:id="@+id/textView4"
+        style="@android:style/TextAppearance.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="็็็้้High Score"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="152dp" />
+
+    <TextView
+        android:id="@+id/highScoreTV"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="145dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
