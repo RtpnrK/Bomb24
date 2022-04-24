@@ -7,23 +7,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-    public class Game_lose extends AppCompatActivity {
+    public class Game_lose extends Game_win {
         private String gameMode;
-        private Button changeDff_bt, retry_bt;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_lose);
-            changeDff_bt = findViewById(R.id.changeDff_bt);
+            TextView score_tv = findViewById(R.id.score);
+            TextView highScore_tv = findViewById(R.id.highScore);
+            Button changeDff_bt = findViewById(R.id.changeDff_bt);
+            Button retry_bt = findViewById(R.id.retry_bt);
+            retry_bt.setOnClickListener(this::next);
             changeDff_bt.setOnClickListener(this::changeDifficulty);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
             gameMode = getIntent().getStringExtra("gameMode");
+            score_tv.setText(String.valueOf(currentScore));
+            highScore_tv.setText(String.valueOf(currentScore));
         }
 
         public void changeDifficulty(View v) {
+            editor.remove("CURRENT_SCORE");
             Intent intent = new Intent(this, SelectDifficulty.class);
             new AlertDialog.Builder(this).setMessage("Do you want to change difficulty")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -38,9 +46,15 @@ import androidx.appcompat.app.AppCompatActivity;
         }
 
         public void next(View v) {
+            editor.remove("CURRENT_SCORE");
             Intent intent = new Intent(this, Start.class);
             intent.putExtra("gameMode", gameMode);
             startActivity(intent);
             finish();
         }
+
+        @Override
+        public void onBackPressed() {
+        }
     }
+

@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class game_easy extends AppCompatActivity {
     protected Button blue_bt, red_bt, green_bt, yellow_bt, plus_bt, minus_bt, multiply_bt, divide_bt,
@@ -113,8 +114,7 @@ public class game_easy extends AppCompatActivity {
         cdt = new CountDownTimer(timeInMillis, 1000) {
             public void onTick(long millisUntilFinished) {
                 currentTimeMillis = millisUntilFinished;
-                String strTime = String.valueOf(millisUntilFinished / 1000);
-                time_tv.setText(strTime);
+                timeFormat();
             }
             public void onFinish() {
                 time_tv.setText("0");
@@ -123,6 +123,14 @@ public class game_easy extends AppCompatActivity {
             }
         };
         cdt.start();
+    }
+
+    public void timeFormat() {
+        int minutes = (int) (currentTimeMillis / 1000) / 60;
+        int seconds = (int) (currentTimeMillis / 1000) % 60;
+
+        String timeFormatted = String.format(Locale.getDefault(),"%02d:%02d" , minutes, seconds);
+        time_tv.setText(timeFormatted);
     }
 
     public void blueClick(View v) {
@@ -356,7 +364,7 @@ public class game_easy extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     public void showAns(View v) {
-
+        try{
             String exp = result_tv.getText().toString();
             ExpressionBuilder eb = new ExpressionBuilder(exp);
             Expression e = eb.build();
@@ -369,8 +377,8 @@ public class game_easy extends AppCompatActivity {
                     result_tv.setTextColor(Color.GREEN);
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
-                    gameOver();
                     score++;
+                    gameOver();
                 } else {
                     gameWin = false;
                     ans_tv.setText(ans);
@@ -378,11 +386,15 @@ public class game_easy extends AppCompatActivity {
                     disableBT(allAL);
                     clear_bt.setEnabled(true);
                 }
-                //CheckHighScore();
             } else {
                 ans_tv.setText(ans + " ");
                 enableBT(opAL);
             }
+    } catch (Exception e) {
+        ans_tv.setText("ERROR!");
+        disableBT(allAL);
+        clear_bt.setEnabled(true);
+    }
 
     }
 
@@ -405,64 +417,5 @@ public class game_easy extends AppCompatActivity {
                 startActivity(intent,b);
             }
         },2000);
-    }
-
-    public void CheckHighScore(){
-        if (highScore.equals("")){
-            highScore = this.getHighScore();
-        }
-        else if (score > Integer.parseInt(highScore)){
-            highScore = String.valueOf(score);
-
-            File scoreFile = new File("highScore.dat");
-            if (!scoreFile.exists()){
-                try {
-                    scoreFile.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            FileWriter writerFile = null;
-            BufferedWriter writer = null;
-
-            try {
-                writerFile = new FileWriter(scoreFile);
-                writer = new BufferedWriter(writerFile);
-                writer.write(this.highScore);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            finally {
-                try {
-                    if (writer != null)
-                        writer.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-    }
-
-    public String getHighScore(){
-        FileReader readFile = null;
-        BufferedReader reader = null;
-        try{
-            readFile = new FileReader("highScore.dat");
-            reader = new BufferedReader(readFile);
-            return reader.readLine();
-        }
-        catch (Exception e) {
-            return "0";
-        }
-        finally {
-            try {
-                if (reader != null)
-                    reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }

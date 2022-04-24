@@ -40,7 +40,7 @@ public class game_normal extends game_easy {
                     gameWin = true;
                     ans_tv.setText(ans);
                     result_tv.setText("Bomb Defuse!");
-                    time_tv.setTextColor(Color.GREEN);
+                    result_tv.setTextColor(Color.GREEN);
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
                     gameOver();

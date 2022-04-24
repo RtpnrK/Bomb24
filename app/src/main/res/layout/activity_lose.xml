@@ -96,6 +96,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/panel_button"
+        android:onClick="next"
         android:text="Retry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

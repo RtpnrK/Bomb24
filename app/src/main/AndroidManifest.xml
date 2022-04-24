@@ -38,10 +38,6 @@
             android:exported="false"
             android:screenOrientation="sensorLandscape" />
         <activity
-            android:name=".HighScore"
-            android:exported="false"
-            android:screenOrientation="sensorLandscape" />
-        <activity
             android:name=".SelectDifficulty"
             android:exported="false"
             android:screenOrientation="sensorLandscape" />

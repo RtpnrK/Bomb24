@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import net.objecthunter.exp4j.Expression;
@@ -17,6 +18,15 @@ public class game_hard extends game_normal {
         mode_tv.setText("Game mode: Hard");
         gameMode = "Hard";
         enter_bt.setOnClickListener(this::showAns);
+        startTimeMillis = 60000;
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cdt.cancel();
+                timeUpdate(startTimeMillis);
+            }
+        },1000);
     }
 
     @SuppressLint("SetTextI18n")
@@ -32,10 +42,9 @@ public class game_hard extends game_normal {
                     gameWin = true;
                     ans_tv.setText(ans);
                     result_tv.setText("Bomb Defuse!");
-                    time_tv.setTextColor(Color.GREEN);
+                    result_tv.setTextColor(Color.GREEN);
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
-                    gameOver();
                 } else {
                     gameWin = false;
                     ans_tv.setText(ans);
@@ -44,8 +53,8 @@ public class game_hard extends game_normal {
                     clear_bt.setEnabled(true);
                     cdt.cancel();
                     time_tv.setText("");
-                    gameOver();
                 }
+                gameOver();
             } else {
                 ans_tv.setText(ans + " ");
                 enableBT(opAL);
