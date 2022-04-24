@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bomb" />
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/result_tv">
+
+        <android.widget.Button
+            android:id="@+id/blue_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="126dp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/yellow_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="272dp"
+            tools:layout_editor_absoluteY="126dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow3">
+
+        <android.widget.Button
+            android:id="@+id/red_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/green_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow4">
+
+        <android.widget.Button
+            android:id="@+id/open_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="("
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/close_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text=")"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TextView
+        android:id="@+id/result_tv"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:background="@drawable/message_box"
+        android:fontFamily="@font/digital7"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline8">
+
+        <TextView
+            android:id="@+id/ans_tv"
+            android:layout_width="88dp"
+            android:layout_height="45dp"
+            android:background="@drawable/message_box"
+            android:fontFamily="@font/digital7mono"
+            android:gravity="center"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="88dp"
+            android:layout_height="45dp"
+            android:background="@drawable/message_box"
+            android:fontFamily="@font/digital7mono"
+            android:gravity="center"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow5">
+
+        <android.widget.Button
+            android:id="@+id/plus_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="+"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/minus_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="-"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/power_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="^"
+            android:textSize="20sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow2">
+
+        <android.widget.Button
+            android:id="@+id/multiply_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="*"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/divide_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="/"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/undo_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="del"
+            android:textSize="20sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow">
+
+        <android.widget.Button
+            android:id="@+id/enter_bt"
+            android:layout_width="117dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:text="Enter"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <android.widget.Button
+            android:id="@+id/clear_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="clr"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.54" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

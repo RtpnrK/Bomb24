@@ -356,7 +356,7 @@ public class game_easy extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     public void showAns(View v) {
-        try {
+
             String exp = result_tv.getText().toString();
             ExpressionBuilder eb = new ExpressionBuilder(exp);
             Expression e = eb.build();
@@ -370,6 +370,7 @@ public class game_easy extends AppCompatActivity {
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
                     gameOver();
+                    score++;
                 } else {
                     gameWin = false;
                     ans_tv.setText(ans);
@@ -382,17 +383,18 @@ public class game_easy extends AppCompatActivity {
                 ans_tv.setText(ans + " ");
                 enableBT(opAL);
             }
-        } catch (Exception e) {
-            ans_tv.setText("ERROR!");
-            disableBT(allAL);
-            clear_bt.setEnabled(true);
-        }
+
     }
 
     public void gameOver() {
-        Intent intent = new Intent(this, GameOver.class);
-        intent.putExtra("gameWin", gameWin);
+        Intent intent;
+        if (gameWin) {
+            intent = new Intent(this, Game_win.class);
+        } else {
+            intent = new Intent(this, Game_lose.class);
+        }
         intent.putExtra("gameMode", gameMode);
+        intent.putExtra("score", score);
         cdt.cancel();
         time_tv.setText("");
         Bundle b = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();

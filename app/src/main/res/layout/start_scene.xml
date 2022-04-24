@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bomb" />
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="150dp">
+
+        <Button
+            android:id="@+id/blue_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:textSize="20sp"
+            android:clickable="false"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="126dp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/yellow_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:textSize="20sp"
+            android:clickable="false"
+            tools:layout_editor_absoluteX="272dp"
+            tools:layout_editor_absoluteY="126dp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="214dp">
+
+        <Button
+            android:id="@+id/red_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:clickable="false"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/green_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:clickable="false"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="277dp">
+
+        <Button
+            android:id="@+id/open_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:text="("
+            android:textSize="20sp"
+            android:clickable="false"/>
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/close_bt"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:text=")"
+            android:textSize="20sp"
+            android:clickable="false"/>
+    </TableRow>
+
+    <TextView
+        android:id="@+id/result_tv"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:background="@drawable/message_box"
+        android:fontFamily="@font/digital7"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="86dp" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="408dp"
+        tools:layout_editor_absoluteY="36dp">
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="400dp"
+        tools:layout_editor_absoluteY="150dp">
+
+        <Button
+            android:id="@+id/plus_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="+"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/minus_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="-"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/power_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="^"
+            android:textSize="20sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="400dp"
+        tools:layout_editor_absoluteY="214dp">
+
+        <Button
+            android:id="@+id/multiply_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="*"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/divide_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="/"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/undo_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:clickable="false"
+            android:fontFamily="@font/galindo"
+            android:text="del"
+            android:textSize="20sp" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="400dp"
+        tools:layout_editor_absoluteY="277dp">
+
+        <Button
+            android:id="@+id/enter_bt"
+            android:layout_width="117dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:text="Enter"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="7dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/clear_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/panel_button"
+            android:fontFamily="@font/galindo"
+            android:text="clr"
+            android:clickable="false"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TextView
+        android:id="@+id/ans_tv"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:background="@drawable/message_box"
+        android:fontFamily="@font/digital7mono"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="400dp"
+        tools:layout_editor_absoluteY="86dp" />
+
+    <TextView
+        android:id="@+id/time_tv"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:background="@drawable/message_box"
+        android:fontFamily="@font/digital7mono"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="494dp"
+        tools:layout_editor_absoluteY="86dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

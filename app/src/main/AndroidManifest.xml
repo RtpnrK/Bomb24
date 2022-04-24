@@ -10,11 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bomb24">
         <activity
-            android:name=".Start"
-            android:exported="false" />
+            android:name=".cutscene"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"/>
         <activity
-            android:name=".GameOver"
-            android:exported="false" />
+            android:name=".Start"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"/>
+        <activity
+            android:name=".Game_win"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"/>
+        <activity
+            android:name=".Game_lose"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"/>
         <activity
             android:name=".game_easy"
             android:exported="false"

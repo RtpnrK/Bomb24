@@ -59,7 +59,7 @@ public class SelectDifficulty extends AppCompatActivity {
     }
 
     public void next(View v) {
-        Intent intent = new Intent(this, Start.class);
+        Intent intent = new Intent(this, cutscene.class);
         intent.putExtra("gameMode", gameMode);
         startActivity(intent);
         finish();

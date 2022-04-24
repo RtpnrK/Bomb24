@@ -9,25 +9,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
-public class GameOver extends AppCompatActivity {
+public class Game_win extends AppCompatActivity {
     private String gameMode;
     private Button next_bt, changeDff_bt, retry_bt;
+    private TextView score_tv;
+    private int currentScore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Boolean gameWin = getIntent().getBooleanExtra("gameWin", true);
-        if (gameWin) {
-            setContentView(R.layout.activity_win);
-        } else {
-            setContentView(R.layout.activity_lose);
-        }
+        setContentView(R.layout.activity_win);
         next_bt = findViewById(R.id.win_next_bt);
         changeDff_bt = findViewById(R.id.changeDff_bt);
         next_bt.setOnClickListener(this::next);
         changeDff_bt.setOnClickListener(this::changeDifficulty);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         gameMode = getIntent().getStringExtra("gameMode");
+        int score = getIntent().getIntExtra("score", 0);
+        currentScore += score;
+        score_tv = findViewById(R.id.score);
+        score_tv.setText(String.valueOf(currentScore));
     }
 
     public void changeDifficulty(View v) {
