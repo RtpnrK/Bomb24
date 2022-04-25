@@ -120,7 +120,13 @@ public class game_easy extends AppCompatActivity {
             public void onFinish() {
                 time_tv.setText("0");
                 result_tv.setText("Time Out!");
-                gameOver();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        gameOver();
+                    }
+                },2000);
             }
         };
         cdt.start();
@@ -270,6 +276,11 @@ public class game_easy extends AppCompatActivity {
             result_tv.setText(text);
             if (isOP) {
                 enableBT(opAL);
+                red_bt.setEnabled(false);
+                blue_bt.setEnabled(false);
+                green_bt.setEnabled(false);
+                yellow_bt.setEnabled(false);
+
             } else {
                 enableBT(allAL);
                 disableBT(numAL);
@@ -325,12 +336,13 @@ public class game_easy extends AppCompatActivity {
     }
 
     public void mainMenu(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
         new AlertDialog.Builder(this).setMessage("Do you want to go back to main menu")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(intent);
                         finish();
-                        System.exit(0);
                     }
                 })
                 .setNegativeButton("No", null)

@@ -43,6 +43,7 @@ public class game_normal extends game_easy {
                     result_tv.setTextColor(Color.GREEN);
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
+                    score++;
                     gameOver();
                 } else {
                     gameWin = false;

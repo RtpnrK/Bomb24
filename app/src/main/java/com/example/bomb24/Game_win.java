@@ -26,7 +26,6 @@ public class Game_win extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         gameMode = getIntent().getStringExtra("gameMode");
         TextView score_tv = findViewById(R.id.score);
-        TextView highScore_tv = findViewById(R.id.highScore);
         score = getIntent().getIntExtra("score", 0);
         score_tv.setText(String.valueOf(score));
         }

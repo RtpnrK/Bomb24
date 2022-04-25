@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_lose);
             TextView score_tv = findViewById(R.id.score);
-            TextView highScore_tv = findViewById(R.id.highScore);
             Button changeDff_bt = findViewById(R.id.changeDff_bt);
             Button retry_bt = findViewById(R.id.retry_bt);
             retry_bt.setOnClickListener(this::next);
@@ -27,7 +26,6 @@ import androidx.appcompat.app.AppCompatActivity;
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
             gameMode = getIntent().getStringExtra("gameMode");
             score_tv.setText(String.valueOf(score));
-            highScore_tv.setText(String.valueOf(score));
         }
 
         public void changeDifficulty(View v) {

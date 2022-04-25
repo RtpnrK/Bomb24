@@ -45,6 +45,7 @@ public class game_hard extends game_normal {
                     result_tv.setTextColor(Color.GREEN);
                     ans_tv.setTextColor(Color.GREEN);
                     disableBT(allAL);
+                    score++;
                 } else {
                     gameWin = false;
                     ans_tv.setText(ans);

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/ic_launcher_background">
 
     <ImageView
         android:id="@+id/imageView"
@@ -26,7 +27,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/result_tv">
 
-        <android.widget.Button
+        <Button
             android:id="@+id/blue_bt"
             android:layout_width="70dp"
             android:layout_height="55dp"
@@ -41,7 +42,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/yellow_bt"
             android:layout_width="70dp"
             android:layout_height="55dp"
@@ -63,7 +64,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/tableRow3">
 
-        <android.widget.Button
+        <Button
             android:id="@+id/red_bt"
             android:layout_width="70dp"
             android:layout_height="55dp"
@@ -76,7 +77,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/green_bt"
             android:layout_width="70dp"
             android:layout_height="55dp"
@@ -94,7 +95,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/tableRow4">
 
-        <android.widget.Button
+        <Button
             android:id="@+id/open_bt"
             android:layout_width="70dp"
             android:layout_height="55dp"
@@ -108,7 +109,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/close_bt"
             android:layout_width="70dp"
             android:layout_height="55dp"
@@ -179,7 +180,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/tableRow5">
 
-        <android.widget.Button
+        <Button
             android:id="@+id/plus_bt"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -193,7 +194,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/minus_bt"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -207,7 +208,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/power_bt"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -228,7 +229,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/tableRow2">
 
-        <android.widget.Button
+        <Button
             android:id="@+id/multiply_bt"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -242,7 +243,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/divide_bt"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -256,7 +257,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/undo_bt"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -276,7 +277,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline6"
         app:layout_constraintTop_toBottomOf="@+id/tableRow">
 
-        <android.widget.Button
+        <Button
             android:id="@+id/enter_bt"
             android:layout_width="117dp"
             android:layout_height="55dp"
@@ -289,7 +290,7 @@
             android:layout_width="7dp"
             android:layout_height="wrap_content" />
 
-        <android.widget.Button
+        <Button
             android:id="@+id/clear_bt"
             android:layout_width="55dp"
             android:layout_height="55dp"
