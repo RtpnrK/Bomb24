@@ -14,7 +14,7 @@ import java.util.Random;
 public class Start extends AppCompatActivity {
     private Button blue_bt, red_bt, green_bt, yellow_bt;
     private TextView time_tv;
-    private int intNum1, intNum2, intNum3, intNum4;
+    private int intNum1, intNum2, intNum3, intNum4, score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,7 @@ public class Start extends AppCompatActivity {
         yellow_bt = findViewById(R.id.yellow_bt);
         time_tv = findViewById(R.id.time_tv);
         String gameMode = getIntent().getStringExtra("gameMode");
+        score = getIntent().getIntExtra("score",0);
         Intent intent;
         if (gameMode.equals("Easy")) {
             intent = new Intent(this, game_easy.class);
@@ -92,6 +93,7 @@ public class Start extends AppCompatActivity {
                 intent.putExtra("num2", num2);
                 intent.putExtra("num3", num3);
                 intent.putExtra("num4", num4);
+                intent.putExtra("score", score);
                 startActivity(intent);
                 finish();
             }

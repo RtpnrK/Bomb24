@@ -26,12 +26,11 @@ import androidx.appcompat.app.AppCompatActivity;
             changeDff_bt.setOnClickListener(this::changeDifficulty);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
             gameMode = getIntent().getStringExtra("gameMode");
-            score_tv.setText(String.valueOf(currentScore));
-            highScore_tv.setText(String.valueOf(currentScore));
+            score_tv.setText(String.valueOf(score));
+            highScore_tv.setText(String.valueOf(score));
         }
 
         public void changeDifficulty(View v) {
-            editor.remove("CURRENT_SCORE");
             Intent intent = new Intent(this, SelectDifficulty.class);
             new AlertDialog.Builder(this).setMessage("Do you want to change difficulty")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -46,7 +45,6 @@ import androidx.appcompat.app.AppCompatActivity;
         }
 
         public void next(View v) {
-            editor.remove("CURRENT_SCORE");
             Intent intent = new Intent(this, Start.class);
             intent.putExtra("gameMode", gameMode);
             startActivity(intent);

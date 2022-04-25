@@ -108,6 +108,7 @@ public class game_easy extends AppCompatActivity {
         green_bt.setText(num3);
         yellow_bt.setText(num4);
         result_tv.setText("");
+        score += getIntent().getIntExtra("score", score);
     }
 
     public void timeUpdate(long timeInMillis) {

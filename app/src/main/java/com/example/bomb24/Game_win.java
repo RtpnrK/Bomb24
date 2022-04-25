@@ -14,8 +14,7 @@ import android.widget.TextView;
 
 public class Game_win extends AppCompatActivity {
     private String gameMode;
-    protected SharedPreferences.Editor editor;
-    protected int currentScore;
+    protected int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +27,12 @@ public class Game_win extends AppCompatActivity {
         gameMode = getIntent().getStringExtra("gameMode");
         TextView score_tv = findViewById(R.id.score);
         TextView highScore_tv = findViewById(R.id.highScore);
-        int score = getIntent().getIntExtra("score", 0);
-        SharedPreferences settings = getSharedPreferences("GAME_DATA", MODE_PRIVATE );
-        currentScore = settings.getInt("CURRENT_SCORE", 0) + score;
-        editor = settings.edit();
-        editor.putInt("CURRENT_SCORE", currentScore);
-        editor.commit();
-        score_tv.setText(String.valueOf(currentScore));
-        highScore_tv.setText(String.valueOf(currentScore));
+        score = getIntent().getIntExtra("score", 0);
+        score_tv.setText(String.valueOf(score));
         }
 
 
     public void changeDifficulty(View v) {
-        editor.remove("CURRENT_SCORE");
         Intent intent = new Intent(this, SelectDifficulty.class);
         new AlertDialog.Builder(this).setMessage("Do you want to change difficulty")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -57,6 +49,7 @@ public class Game_win extends AppCompatActivity {
     public void next(View v) {
         Intent intent = new Intent(this, Start.class);
         intent.putExtra("gameMode", gameMode);
+        intent.putExtra("score", score);
         startActivity(intent);
         finish();
     }
